@@ -1232,7 +1232,7 @@ document.getElementById('btnContStars').addEventListener('click',()=>reviveWithS
 
 document.getElementById('btnRestart').addEventListener('click', startGame);
 document.getElementById('btnShare').addEventListener('click',()=>{
-  const t=`🍉 Drop & Merge: набрал ${score.toLocaleString()} очков! Сможешь лучше?`;
+  const t=`🔮 Neo & Merge: набрал ${score.toLocaleString()} очков! Сможешь лучше?`;
   if(tg) tg.switchInlineQuery(t,['users','groups']);
   else navigator.clipboard?.writeText(t).then(()=>toast('Скопировано!'));
 });
