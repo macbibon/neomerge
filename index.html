@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Neo Merge 🔮</title>
+<title>Drop & Merge 🍉</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
@@ -386,9 +386,9 @@ canvas#C{position:fixed;top:0;left:0;display:block;z-index:1}
 ═══════════════════════════════ -->
 <div id="sStart" class="screen">
   <div class="logo">
-    <div class="logo-icon">🔮</div>
-    <div class="logo-title">NEO &amp; MERGE</div>
-    <div class="logo-sub">FINO × GAMES</div>
+    <div class="logo-icon">🍉</div>
+    <div class="logo-title">DROP &amp; MERGE</div>
+    <div class="logo-sub">SUIKA × NEON</div>
   </div>
 
   <div class="player-row">
@@ -519,11 +519,11 @@ canvas#C{position:fixed;top:0;left:0;display:block;z-index:1}
 'use strict';
 
 /* ══════════════════════════════════════════════
-   CONFIG  
+   CONFIG  ← замените перед деплоем
 ══════════════════════════════════════════════ */
 const CFG = {
-  ADGRAM_ID:    '23716',
-  BOT:          'NeoMergeBot',
+  ADGRAM_ID:    'YOUR_ADGRAM_BLOCK_ID',
+  BOT:          'YourBotUsername',
   E_MAX:        5,
   E_REFILL_MS:  6 * 3600_000,
   DROP_CD:      0.5,
@@ -855,6 +855,12 @@ function updatePts(){
     if(p.life<=0) pts.splice(i,1);
   }
 }
+/* ══════════════════════════════════════════════
+   GAME STATE
+══════════════════════════════════════════════ */
+let gameActive=false, isGameOver=false;
+let score=0, comboCount=0, comboTimer=0;
+let curIdx=0, nxtIdx=0, dropCD=0, goTimer=0, lastT=0;
 
 /* ══════════════════════════════════════════════
    CANVAS & LAYOUT
@@ -922,13 +928,6 @@ function drawNext(){
   ctx.globalAlpha=.6; ctx.fillText('СЛЕД.',nx+22,ny-20); ctx.restore();
   drawBall(nx,ny,bd.r*.72,bd,.7);
 }
-
-/* ══════════════════════════════════════════════
-   GAME STATE
-══════════════════════════════════════════════ */
-let gameActive=false, isGameOver=false;
-let score=0, comboCount=0, comboTimer=0;
-let curIdx=0, nxtIdx=0, dropCD=0, goTimer=0, lastT=0;
 
 /* ══════════════════════════════════════════════
    GAME LOOP
@@ -1271,16 +1270,7 @@ showScreen('start');
 requestAnimationFrame(ambient);
 // Show onboarding for new users
 if(!LS.g('dm_ob_done',0)) setTimeout(showOnboarding,800);
-   try {
-    initAd();
-    showScreen('start');
-    requestAnimationFrame(ambient);
-    if(!LS.g('dm_ob_done',0)) setTimeout(showOnboarding,800);
-  } catch (e) {
-    console.error('INIT ERROR:', e);
-    alert('Ошибка инициализации: ' + (e?.message || e));
-  }
-</script>
 </script>
 </body>
 </html>
+
