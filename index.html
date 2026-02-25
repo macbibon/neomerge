@@ -1271,6 +1271,16 @@ showScreen('start');
 requestAnimationFrame(ambient);
 // Show onboarding for new users
 if(!LS.g('dm_ob_done',0)) setTimeout(showOnboarding,800);
+   try {
+    initAd();
+    showScreen('start');
+    requestAnimationFrame(ambient);
+    if(!LS.g('dm_ob_done',0)) setTimeout(showOnboarding,800);
+  } catch (e) {
+    console.error('INIT ERROR:', e);
+    alert('Ошибка инициализации: ' + (e?.message || e));
+  }
+</script>
 </script>
 </body>
 </html>
